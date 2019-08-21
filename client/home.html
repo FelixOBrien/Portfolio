@@ -1,0 +1,79 @@
+<template name="home">
+        <main class="page lanidng-page">
+                <section class="portfolio-block block-intro">
+                    <div class="container">
+                        <div class="avatar" style="background-image:url(&quot;assets/img/identicon.png&quot;);"></div>
+                        <div class="about-me">
+                            <h1>FELIX O'BRIEN</h1>
+                            <p>SOFTWARE DEVELOPER</p>
+                            <ul>
+                                <li><a href="https://github.com/felixobrien">GITHUB</a></li>
+                                <li><a href="https://github.com/felixobrien">YOUTUBE</a></li>
+                                <li><a href="https://github.com/felixobrien">DISCORD</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="portfolio-block photography">
+                    <div class="heading">
+                        <h2>Recent Work</h2>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            {{#each projects}}
+                            <div class="col-md-6 col-lg-4">
+                                <div class="project-card-no-image">
+                                    <h3>{{title}}</h3>
+                                    <h4>{{desc}}</h4><a class="btn btn-outline-primary btn-sm" role="button" href="{{link}}">See More</a>
+                                    <div class="tags"><a href="#">{{category}}</a></div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </section>
+                <section class="portfolio-block call-to-action border-bottom">
+                    <div class="container">
+                        <div class="d-flex justify-content-center align-items-center content">
+                            <h3>Like what you see?</h3><button href="/contact" class="btn btn-outline-primary btn-lg" type="button">Contact me</button></div>
+                    </div>
+                </section>
+                <section class="portfolio-block skills">
+                    <div class="container">
+                        <div class="heading">
+                            <h2>Certificates</h2>
+                        </div>
+                        <div class="row">
+                            {{#each certificates}}
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border-0"><a href="#"><img class="card-img-top scale-on-hover" src="assets/img/nature/image1.jpg" alt="Card Image"></a>
+                                    <div class="card-body">
+                                        <h6><a href="#">Lorem Ipsum</a></h6>
+                                        <p class="text-muted card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <section class="portfolio-block website gradient">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-12 col-lg-5 offset-lg-1 text">
+                            <h3>Upside Down?</h3>
+                            <p>Click the laptop to joine me &nbsp;Down Under. Don't worry the spiders are friendly.</p>
+                        </div>
+                        <div class="col-md-12 col-lg-5">
+                            <div class="portfolio-laptop-mockup">
+                                <div class="screen">
+                                    <div class="screen-content" style="background-image:url(&quot;assets/img/aussie.svg&quot;);"></div>
+                                </div>
+                                <div class="keyboard"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+</template>
