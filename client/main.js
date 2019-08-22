@@ -51,6 +51,7 @@ Template.admin.events({
 });
 Template.contact.events({
     "submit #contactForm"(e, template){
-
+        e.preventDefault();
+        Meteor.call("sendEmail", $("#name").val(), $("#subject").val(), $("#email").val(), $("#message").val());
     }
 });
