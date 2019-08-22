@@ -4,7 +4,9 @@ import { Email } from 'meteor/email';
 import "../lib/projects";
 import "../lib/certificates";
 
-
+Accounts.config({
+  forbidClientAccountCreation: true
+});
 
 Meteor.methods({
   addProject: function(title, desc, url, category){
