@@ -1,11 +1,10 @@
 import { Meteor } from 'meteor/meteor';
+import Images from "../lib/files"
 import "../lib/projects";
+import "../lib/certificates";
 Meteor.methods({
   addProject: function(title, desc, url, category){
-   /* if(!Meteor.userId()) {
-      throw new Meteor.Error('not-authorized', 'you are not signed in');
-    }*/
-
+ 
 
    Projects.insert({
       title: title,
@@ -15,5 +14,12 @@ Meteor.methods({
       link: url
     });
   },
-    
+  addCertificate: function(title, desc, url){
+   Certificates.insert({
+      title: title,
+      desc: desc,
+      created: new Date(), 
+      link: url
+    });
+  }
 });

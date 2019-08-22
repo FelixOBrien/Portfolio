@@ -2,6 +2,11 @@
 .profile {
   width: 10rem;
 }
+.flipped{
+  transform:rotate(180deg);
+  -ms-transform:rotate(180deg);
+  -webkit-transform:rotate(180deg);
+}
 
 .portfolio-block.block-intro .avatar {
   border-radius: 0px !important;
