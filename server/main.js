@@ -1,6 +1,12 @@
 import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base'
 import "../lib/projects";
 import "../lib/certificates";
+
+
+Accounts.config({
+  forbidClientAccountCreation: true,
+});
 Meteor.methods({
   addProject: function(title, desc, url, category){
  

@@ -49,3 +49,8 @@ Template.admin.events({
 
 }
 });
+Template.contact.events({
+    "submit #contactForm"(e, template){
+
+    }
+});
