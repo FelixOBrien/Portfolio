@@ -1,6 +1,5 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import Images from '../lib/files';
 
 import 'bootstrap';
 import 'popper.js';
@@ -27,48 +26,26 @@ Template.home.events({
 })
 
 
-Template.admin.onCreated(function () {
-  this.currentUpload = new ReactiveVar(false);
-});
-
-Template.admin.helpers({
-  currentUpload() {
-    return Template.instance().currentUpload.get();
-  }
-});
 
 Template.admin.events({
-  'change #fileInput'(e, template) {
-    if (e.currentTarget.files && e.currentTarget.files[0]) {
-      // We upload only one file, in case
-      // multiple files were selected
-      const upload = Images.insert({
-        file: e.currentTarget.files[0],
-        streams: 'dynamic',
-        chunkSize: 'dynamic'
-      }, false);
-
-      upload.on('start', function () {
-        template.currentUpload.set(this);
-      });
-
-      upload.on('end', function (error, fileObj) {
-        if (error) {
-          alert('Error during upload: ' + error);
-        } else {
-            console.log(fileObj)
-          alert('File "' + fileObj.name + '" successfully uploaded');
-        }
-        template.currentUpload.set(false);
-      });
-
-      upload.start();
-    }
-  },
+ 
   'submit #newProject'(e, template){
-
+    e.preventDefault();
+    var title = $("#projectTitle").val();
+    var desc = $("#projectDesc").val();
+    var link = $("#projectLink").val();
+    var category = $("#projectCategory").val();
+    
+    Meteor.call("addProject",title, desc, link, category);
   },
   'submit #newCertificate'(e, template){
+      e.preventDefault();
+  var title = $("#certTitle").val();
+  var desc = $("#certDesc").val();
+  var link = $("#certLink").val();
+  var file = $("#certImage").val();
+  Meteor.call("addCertificate",title, desc, link, file)
+
 
 }
 });

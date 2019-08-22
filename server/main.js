@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-import Images from "../lib/files"
 import "../lib/projects";
 import "../lib/certificates";
 Meteor.methods({
@@ -14,12 +13,13 @@ Meteor.methods({
       link: url
     });
   },
-  addCertificate: function(title, desc, url){
+  addCertificate: function(title, desc, url, img){
    Certificates.insert({
       title: title,
       desc: desc,
       created: new Date(), 
-      link: url
+      link: url,
+      img: img
     });
   }
 });
