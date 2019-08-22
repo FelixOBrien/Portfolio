@@ -1,3 +1,4 @@
 node_modules/
 settings.json
 server/smtp.js
+bfg.jar
