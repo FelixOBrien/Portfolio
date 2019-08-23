@@ -43,9 +43,16 @@ Template.admin.events({
   var title = $("#certTitle").val();
   var desc = $("#certDesc").val();
   var link = $("#certLink").val();
-  var file = $("#certImage").val();
-  Meteor.call("addCertificate",title, desc, link, file)
-
+  var file = document.getElementById("certImage").files[0];
+  console.log(file);
+    if(file){
+        var reader = new FileReader();
+        reader.onload = function(fileLoadEvent) {
+            Meteor.call("addCertificate",title, desc, link, reader.result, file.name)
+        };
+        reader.readAsBinaryString(file);
+  
+    }
 
 }
 });
