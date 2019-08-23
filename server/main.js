@@ -6,7 +6,9 @@ import "../lib/projects";
 import "../lib/certificates";
 
 
-
+const bound  = Meteor.bindEnvironment((callback) => {
+  return callback();
+});
 Accounts.config({
   forbidClientAccountCreation: true
 });
@@ -43,7 +45,8 @@ Meteor.methods({
       Key: imgInfo, // file will be saved as testBucket/contacts.csv
       Body: img
     }
-  s3.putObject(params, function(s3Err, data) {
+  s3.upload(params, function(s3Err, data) {
+    bound(() => {
       if (s3Err) throw s3Err;
       console.log(`File uploaded successfully at ${data.Location}`)
       Certificates.insert({
@@ -53,6 +56,7 @@ Meteor.methods({
         link: url,
         img: data.Location
       });
+    })
   });
 
   },

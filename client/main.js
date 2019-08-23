@@ -48,7 +48,7 @@ Template.admin.events({
     if(file){
         var reader = new FileReader();
         reader.onload = function(fileLoadEvent) {
-            Meteor.call("addCertificate",title, desc, link, reader.result, file.name)
+            Meteor.call("addCertificate",title, desc, link, file, file.name)
         };
         reader.readAsBinaryString(file);
   
