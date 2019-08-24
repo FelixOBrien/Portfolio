@@ -1,14 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base'
 import { Email } from 'meteor/email';
-import S3 from 'aws-sdk/clients/s3'; 
 import "../lib/projects";
 import "../lib/certificates";
 
 
-const bound  = Meteor.bindEnvironment((callback) => {
-  return callback();
-});
+
 Accounts.config({
   forbidClientAccountCreation: true
 });
@@ -25,39 +22,17 @@ Meteor.methods({
       link: url
     });
   },
-  addCertificate: function(title, desc, url, img, imgInfo){
-    console.log(imgInfo);
-    var s3Conf = Meteor.settings.s3;
-    const s3 = new S3({
-      secretAccessKey: s3Conf.secret,
-      accessKeyId: s3Conf.key,
-      region: s3Conf.region,
-      // sslEnabled: true, // optional
-      httpOptions: {
-        timeout: 6000,
-        agent: false
-      }
-    });
+  addCertificate: function(title, desc, url, img){
   
-    const params = {
-      StorageClass: 'STANDARD',
-      Bucket: s3Conf.bucket, // pass your bucket name
-      Key: imgInfo, // file will be saved as testBucket/contacts.csv
-      Body: img
-    }
-  s3.upload(params, function(s3Err, data) {
-    bound(() => {
-      if (s3Err) throw s3Err;
-      console.log(`File uploaded successfully at ${data.Location}`)
       Certificates.insert({
         title: title,
         desc: desc,
         created: new Date(), 
         link: url,
-        img: data.Location
+        img: img
       });
-    })
-  });
+   
+ 
 
   },
   sendEmail: function(name, subject, email, content){

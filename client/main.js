@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import uploadcare from 'uploadcare-widget'
 
 import 'bootstrap';
 import 'popper.js';
@@ -43,16 +44,17 @@ Template.admin.events({
   var title = $("#certTitle").val();
   var desc = $("#certDesc").val();
   var link = $("#certLink").val();
-  var file = document.getElementById("certImage").files[0];
+  var file = document.getElementById("certImage")
   console.log(file);
-    if(file){
-        var reader = new FileReader();
-        reader.onload = function(fileLoadEvent) {
-            Meteor.call("addCertificate",title, desc, link, file, file.name)
-        };
-        reader.readAsBinaryString(file);
-  
-    }
+  let widget = uploadcare.Widget(file)
+console.log(widget.inputElement.value);
+Meteor.call("addCertificate",title, desc, link, widget.inputElement.value);
+
+
+               
+
+    
+    
 
 }
 });
