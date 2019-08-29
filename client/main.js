@@ -50,7 +50,7 @@ Template.admin.events({
 console.log(widget.inputElement.value);
 Meteor.call("addCertificate",title, desc, link, widget.inputElement.value);
 
-
+e.target.reset();
                
 
     
