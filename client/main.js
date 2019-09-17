@@ -56,6 +56,13 @@ e.target.reset();
     
     
 
+},
+'submit #newBlogPost'(e, template){
+e.preventDefault();
+var title = $("#blogTitle").val();
+var content = $("#blogDesc").val();
+Meteor.call("postBlog", title, content);
+e.target.reset();
 }
 });
 Template.contact.events({

@@ -3,7 +3,7 @@ import { Accounts } from 'meteor/accounts-base'
 import { Email } from 'meteor/email';
 import "../lib/projects";
 import "../lib/certificates";
-
+import "../lib/blog";
 
 
 Accounts.config({
@@ -36,7 +36,6 @@ Meteor.methods({
 
   },
   sendEmail: function(name, subject, email, content){
-    console.log("Email Sent");
     process.env.MAIL_URL = Meteor.settings.MAIL_URL;
     Email.send({
       from: "admin@felixob.com",
@@ -44,5 +43,12 @@ Meteor.methods({
       subject: name + " " + subject + " " + email,
       text: content
       });
+  },
+  postBlog: function(title, content){
+    BlogPosts.insert({
+      title: title,
+      content: content,
+      created: new Date()
+    })
   }
 });
