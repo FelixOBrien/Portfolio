@@ -4,11 +4,7 @@ import { Email } from 'meteor/email';
 import "../lib/projects";
 import "../lib/certificates";
 import "../lib/blog";
-
-
-Accounts.config({
-  forbidClientAccountCreation: true
-});
+import "./user"
 
 Meteor.methods({
   addProject: function(title, desc, url, category){
