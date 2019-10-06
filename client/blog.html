@@ -1,3 +1,38 @@
 <template name = "blog">
-    
+        <main class="page lanidng-page">
+                <section class="portfolio-block block-intro">
+                        <div class="container">
+
+    <div class="row">
+        {{#each posts}}
+        <div class="col-md-6 col-lg-4">
+            <a href = "/blog/post/{{_id}}">
+            <div class="project-card-no-image">
+                <h3>{{title}}</h3>
+                <h4>{{shorten content}}</h4><a class="btn btn-outline-primary btn-sm" role="button">See More</a>
+                <div class="tags"><a href="#">{{created}}</a></div>
+            </div>
+            </a>
+        </div>
+        {{/each}}
+    </div>
+    </div>
+    </section>
+    </main>
+</template>
+<template name="blogPost">
+        <main class="page lanidng-page">
+                <section class="portfolio-block block-intro">
+                        <div class="container">
+
+    <div class="row">
+        {{#with post}}
+        <img id="blogImg" src = "/assets/img/identicon.png"/>
+        <h1 class = "blogTitle">{{title}}</h1>
+        <p class = "blogContent">{{content}}</p>
+        {{/with}}
+    </div>
+    </div>
+    </section>
+    </main>
 </template>

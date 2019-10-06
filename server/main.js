@@ -18,6 +18,21 @@ Meteor.methods({
       link: url
     });
   },
+  editProject: function(title, desc, url, category, id){
+ 
+
+    Projects.update({_id: id},{
+       title: title,
+       desc: desc,
+       category: category,
+       link: url
+     });
+   },
+   deleteProject: function(id){
+ 
+
+    Projects.remove({_id: id});
+   },
   addCertificate: function(title, desc, url, img){
   
       Certificates.insert({
@@ -31,6 +46,25 @@ Meteor.methods({
  
 
   },
+  editCertificate: function(title, desc, url, img, id){
+  
+    Certificates.update({_id: id},{
+      title: title,
+      desc: desc,
+      link: url,
+      img: img
+    });
+ 
+
+
+},
+deleteCertificate: function(id){
+  
+  Certificates.remove({_id: id});
+
+
+
+},
   sendEmail: function(name, subject, email, content){
     process.env.MAIL_URL = Meteor.settings.MAIL_URL;
     Email.send({

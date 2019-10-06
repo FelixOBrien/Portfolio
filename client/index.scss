@@ -1,4 +1,4 @@
-
+//TODO: ".navbar-collapse .show" should be hidden after page change 
 .profile {
   width: 10rem;
 }
@@ -10,7 +10,35 @@
   -ms-transform:rotate(180deg);
   -webkit-transform:rotate(180deg);
 }
+.editor{
+  width: 100%;
 
+}
+.blogTitle{
+  margin-bottom: 30px;
+  display: inline-block;
+}
+.blogContent{
+  font-size: 16px !important;
+  text-align: left;
+  margin-left: 80px;
+}
+#blogImg{
+  float: left;
+  width: 50px;
+  height: 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.editButton{
+  display: inline-block;
+  margin-top: 5px;
+}
+.editTitle{
+  float: left;
+  margin-right: 15px;
+  padding-left:15px;
+}
 .portfolio-block.block-intro .avatar {
   border-radius: 0px !important;
 }

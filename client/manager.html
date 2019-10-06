@@ -1,0 +1,72 @@
+<template name = "manager">
+    <main class="page lanidng-page">
+        <section class="portfolio-block contact">
+            <div class = "container">
+                <h1 class = 'center'>Edit Projects</h1>
+                 <div class = "row">
+                    
+                    {{#each projects}}
+                    <div class = "editor">
+                    <h4 class="editTitle">{{title}}</h4>
+                    <a href = "/edit/project/{{_id}}" class="editButton"><p>Edit</p></a>
+                    <a href = "/delete/project/{{_id}}" class="editButton"><p>Delete</p></a>
+                    </div>
+                    {{/each}}
+                </div>
+                <h1 class = 'center'>Edit Certificates</h1>
+                <div class = "row">
+                    {{#each certificates}}
+                    <div class = "editor">
+                    <h4 class="editTitle">{{title}}</h4>
+                    <a href = "/edit/certificate/{{_id}}" class="editButton"><p>Edit</p></a>
+                    <a href = "/delete/certificate/{{_id}}" class="editButton"><p>Delete</p></a>
+                    </div>
+                    {{/each}}
+                    </div>
+            </div>
+        </section>        
+    </main>
+</template>
+<template name = "editProject">
+        <main class="page contact-page">
+        <section class="portfolio-block contact">
+                <div class="container">
+                    <div class="heading">
+                        <h2>Edit Project</h2>
+                    </div>
+                    {{#with project}}
+                    <form id = "editProject"> 
+                        <div class="form-group"><label for="projectTitle">Title</label><input class="form-control item" type="text" id="projectTitle" value="{{title}}"></div>
+                        <div class="form-group"><label for="projectDesc">Description</label><input class="form-control item" type="text" id="projectDesc" value="{{desc}}"></div>
+                        <div class="form-group"><label for="projectLink">Link to Project (GitHub)</label><input class="form-control item" type="link" id="projectLink" value="{{link}}"></div>
+                        <div class="form-group"><label for="projectCategory">Category</label><input class="form-control item" type="link" id="projectCategory" value="{{category}}"></div>
+                        <div class="form-group"><label for="projectTitle">Title</label><input class="form-control item" type="text" id="projectId" value="{{_id}}" disabled></div>
+                        <div class="form-group"><button class="btn btn-primary btn-block btn-lg" type="submit">Submit Form</button></div>
+                    </form>
+                    {{/with}}
+                </div>
+            </section>
+            </main>
+</template>
+<template name = "editCertificate">
+    <main class="page contact-page">
+        <section class="portfolio-block contact">
+            <div class="container">
+                <div class="heading">
+                    <h2>Edit Certificate</h2>
+                </div>
+                {{#with certificate}}
+                <form id = "editCertificate">
+                    <div class="form-group"><label for="certTitle">Title</label><input class="form-control item" type="text" id="certTitle" value="{{title}}"></div>
+                    <div class="form-group"><label for="certDesc">Description</label><input class="form-control item" type="text" id="certDesc" value="{{desc}}"></div>
+                    <div class="form-group"><label for="certLink">Link to Certificate</label><input class="form-control item" type="link" id="certLink" value="{{link}}"></div>
+                    <div class="form-group"><input type="hidden" role="uploadcare-uploader" name="my_file" id= "certImage" value={{img}}/></div>
+                    <div class="form-group"><label for="certTitle">ID</label><input class="form-control item" type="text" id="certId" value="{{_id}}" disabled></div>
+
+                <div class="form-group"><button class="btn btn-primary btn-block btn-lg" type="submit">Submit Form</button></div>
+                </form>
+                {{/with}}
+            </div>
+        </section>
+    </main>
+</template>

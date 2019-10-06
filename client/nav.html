@@ -8,6 +8,10 @@
                             <li class="nav-item item" role="presentation"><a class="nav-link active " href="/#projects">PROJECTS</a></li>
                             <li class="nav-item item" role="presentation"><a class="nav-link active" href="/blog">BLOG</a></li>
                             <li class="nav-item item" role="presentation"><a class="nav-link active" href="/contact">CONTACT ME</a></li>
+                            {{#if currentUser}}
+                            <li class="nav-item item" role="presentation"><a class="nav-link active" href="/admin">ADMIN PANEL</a></li>
+                            <li class="nav-item item" role="presentation"><a class="nav-link active" href="/manager">MANAGER</a></li>
+                            {{/if}}
                         </ul>
                     </div>
                 </div>

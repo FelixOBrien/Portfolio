@@ -14,9 +14,10 @@ import './index.html';
 import './nav.html';
 import './contact.html';
 import './admin.html';
-
+import './manager.html';
 import '../lib/router';
 import './home.html';
+import './blog.html';
 import './index.scss';
 
 
@@ -25,7 +26,11 @@ Template.home.events({
         $("body").toggleClass("flipped");
     }
 })
-
+Template.registerHelper("shorten", function(content){
+    content.length = 100;
+    console.log(content)
+    return content;
+})
 
 
 Template.admin.events({
@@ -57,12 +62,11 @@ e.target.reset();
     
 
 },
-'submit #newBlogPost'(e, template){
+'submit #newBlog'(e, template){
 e.preventDefault();
 var title = $("#blogTitle").val();
 var content = $("#blogDesc").val();
 Meteor.call("postBlog", title, content);
-e.target.reset();
 }
 });
 Template.contact.events({
@@ -71,3 +75,25 @@ Template.contact.events({
         Meteor.call("sendEmail", $("#name").val(), $("#subject").val(), $("#email").val(), $("#message").val());
     }
 });
+Template.editCertificate.events({
+    "submit #editCertificate"(e, template){
+        e.preventDefault();
+        var title = $("#certTitle").val();
+        var desc = $("#certDesc").val();
+        var link = $("#certLink").val();
+        var file = $("#certImage").val();
+        var id = $("#certId").val();
+        Meteor.call("editCertificate",title, desc, link, file, id);
+    }
+});
+Template.editProject.events({
+    "submit #editProject"(e, template){
+        e.preventDefault();
+        var title = $("#projectTitle").val();
+        var desc = $("#projectDesc").val();
+        var link = $("#projectLink").val();
+        var category = $("#projectCategory").val();
+        var id = $("projectId").val();
+        Meteor.call("editProject",title, desc, link, category, id);
+    }
+})
