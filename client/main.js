@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import uploadcare from 'uploadcare-widget'
+import uploadcare from 'uploadcare-widget';
+import moment from 'moment';
 
 import 'bootstrap';
 import 'popper.js';
@@ -30,6 +31,10 @@ Template.registerHelper("shorten", function(content){
     content.length = 100;
     console.log(content)
     return content;
+})
+Template.registerHelper("dateHandler", function(date){
+
+    return moment(date).format("DD/MM/YYYY");
 })
 
 
