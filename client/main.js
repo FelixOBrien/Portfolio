@@ -92,13 +92,13 @@ Template.editCertificate.events({
     }
 });
 Template.editProject.events({
-    "submit #editProject"(e, template){
+    "submit #editProjectForm"(e, template){
         e.preventDefault();
         var title = $("#projectTitle").val();
         var desc = $("#projectDesc").val();
         var link = $("#projectLink").val();
         var category = $("#projectCategory").val();
-        var id = $("projectId").val();
+        var id = $("#projectId").val();
         Meteor.call("editProject",title, desc, link, category, id);
     }
 })

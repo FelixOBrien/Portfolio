@@ -21,8 +21,8 @@ Meteor.methods({
   }
   },
   editProject: function(title, desc, url, category, id){
- 
     if(Meteor.userId()){
+
     Projects.update({_id: id},{
        title: title,
        desc: desc,
