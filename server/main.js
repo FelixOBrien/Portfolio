@@ -1,9 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 import { Email } from 'meteor/email';
-import "../lib/projects";
-import "../lib/certificates";
-import "../lib/blog";
-import "./user"
+import { Projects } from "../lib/projects";
+import { Certificates } from "../lib/certificates";
+import { BlogPosts } from "../lib/blog";
+import "./user";
+import "./publish";
 
 Meteor.methods({
   addProject: function(title, desc, url, category){
